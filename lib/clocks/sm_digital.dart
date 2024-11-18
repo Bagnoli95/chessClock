@@ -24,13 +24,13 @@ class smDigital extends StatelessWidget {
     // Debug para verificar el valor de isSelected
     debugPrint("smDigital ($identificador) isSelected: $isSelected");
     return Container(
-      color: isSelected ? Colors.grey : Colors.grey[800],
+      color: isSelected ? Colors.grey[800] : Colors.grey,
       child: Container(
         child: Center(
           child: Text(
             formatTime(timeValue), // Formatea los segundos a "MM:SS"
             style: TextStyle(
-              color: isSelected ? Colors.white : Colors.grey,
+              color: isSelected ? Colors.grey : Colors.white,
               letterSpacing: 3,
               fontSize: 50,
               shadows: const [Shadow(color: Colors.blueAccent, offset: Offset(2, 1), blurRadius: 10)],

@@ -23,8 +23,8 @@ class _smClockScreenState extends State<smClockScreen> {
   @override
   void initState() {
     super.initState();
-    leftTime = 600; // Ejemplo: 10 minutos en segundos
-    rightTime = 600; // Ejemplo: 10 minutos en segundos
+    leftTime = 120; // Ejemplo: 10 minutos en segundos
+    rightTime = 120; // Ejemplo: 10 minutos en segundos
   }
 
   void startTimer(bool isLeft) {
@@ -83,16 +83,39 @@ class _smClockScreenState extends State<smClockScreen> {
             // margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
             color: Colors.black,
             child: Center(
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => proClockScreen(appMode: true)),
-                  );
-                },
-                child: Text('SM'),
-              ),
-            ),
+                child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                //SM DIGITAL
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => smClockScreen(appMode: true)));
+                  },
+                  child: Text('smDigital'),
+                ),
+                //SM ANALOG
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => smClockScreen(appMode: false)));
+                  },
+                  child: Text('smAnalog'),
+                ),
+                //PRO DIGITAL
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => proClockScreen(appMode: true)));
+                  },
+                  child: Text('proDigital'),
+                ),
+                //PRO ANALOG
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => proClockScreen(appMode: false)));
+                  },
+                  child: Text('proAnalog'),
+                ),
+              ],
+            )),
           ),
         ),
 
@@ -107,7 +130,7 @@ class _smClockScreenState extends State<smClockScreen> {
               });
               startTimer(true);
             },
-            child: (widget.appMode) ? smDigital(timeValue: rightTime, isSelected: rightSelected, identificador: "Right") : smAnalogic(timeValue: leftTime, isSelected: leftSelected, identificador: "Left"),
+            child: (widget.appMode) ? smDigital(timeValue: rightTime, isSelected: rightSelected, identificador: "Right") : smAnalogic(timeValue: rightTime, isSelected: rightSelected, identificador: "Right"),
           ),
         )
       ],

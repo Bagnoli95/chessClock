@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 class smAnalogic extends StatelessWidget {
   final int timeValue;
@@ -24,18 +25,32 @@ class smAnalogic extends StatelessWidget {
     // Debug para verificar el valor de isSelected
     debugPrint("smAnalogic ($identificador) isSelected: $isSelected");
     return Container(
-      color: isSelected ? Colors.grey : Colors.grey[800],
+      color: isSelected ? Colors.grey[800] : Colors.grey,
       child: Container(
         child: Center(
-          child: Text(
-            formatTime(timeValue), // Formatea los segundos a "MM:SS"
-            style: TextStyle(
-              color: isSelected ? Colors.white : Colors.grey,
-              letterSpacing: 3,
-              fontSize: 50,
-              shadows: const [Shadow(color: Colors.blueAccent, offset: Offset(2, 1), blurRadius: 10)],
-            ),
-          ),
+          child: SfRadialGauge(axes: <RadialAxis>[
+            RadialAxis(minimum: 0, maximum: 120, labelFormat: '{value}s', pointers: <GaugePointer>[
+              NeedlePointer(
+                value: timeValue.toDouble(),
+                needleStartWidth: 1,
+                needleEndWidth: 5,
+                knobStyle: KnobStyle(
+                  knobRadius: 0.05,
+                  borderColor: Colors.black,
+                  borderWidth: 0.02,
+                  color: Colors.white,
+                ),
+              ),
+            ], annotations: <GaugeAnnotation>[
+              GaugeAnnotation(
+                  angle: 90,
+                  positionFactor: 0.5,
+                  widget: Text(
+                    timeValue.toString(),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  ))
+            ])
+          ]),
         ),
       ),
     );

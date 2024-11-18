@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   sensors_plus: ^6.1.0
+  syncfusion_flutter_gauges: ^27.2.2
 
 dev_dependencies:
   flutter_test:

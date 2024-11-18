@@ -104,16 +104,39 @@ class _proClockScreenState extends State<proClockScreen> {
             // margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
             color: Colors.black,
             child: Center(
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => smClockScreen(appMode: true)),
-                  );
-                },
-                child: Text('PRO'),
-              ),
-            ),
+                child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                //SM DIGITAL
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => smClockScreen(appMode: true)));
+                  },
+                  child: Text('smDigital'),
+                ),
+                //SM ANALOG
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => smClockScreen(appMode: false)));
+                  },
+                  child: Text('smAnalog'),
+                ),
+                //PRO DIGITAL
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => proClockScreen(appMode: true)));
+                  },
+                  child: Text('proDigital'),
+                ),
+                //PRO ANALOG
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => proClockScreen(appMode: false)));
+                  },
+                  child: Text('proAnalog'),
+                ),
+              ],
+            )),
           ),
         ),
 
