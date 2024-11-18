@@ -1,0 +1,43 @@
+import 'package:flutter/material.dart';
+
+class proDigital extends StatelessWidget {
+  final int timeValue;
+  final bool isSelected; // Se mantiene final porque no cambia dentro del widget
+  final String identificador;
+
+  const proDigital({
+    super.key,
+    required this.timeValue,
+    required this.isSelected,
+    required this.identificador,
+  });
+
+  String formatTime(int seconds) {
+    int minutes = seconds ~/ 60;
+    int remainingSeconds = seconds % 60;
+    return '${minutes.toString().padLeft(2, '0')}:${remainingSeconds.toString().padLeft(2, '0')}';
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    debugPrint("proDigital ($identificador) isSelected: $isSelected");
+    return Container(
+      color: isSelected ? Colors.grey : Colors.grey[800],
+      child: Center(
+        child: Column(
+          children: [
+            Text(
+              formatTime(timeValue), // Formatea los segundos a "MM:SS"
+              style: TextStyle(
+                color: isSelected ? Colors.white : Colors.grey,
+                letterSpacing: 3,
+                fontSize: 50,
+                shadows: const [Shadow(color: Colors.blueAccent, offset: Offset(2, 1), blurRadius: 10)],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
