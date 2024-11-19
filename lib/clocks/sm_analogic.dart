@@ -5,6 +5,7 @@ class smAnalogic extends StatelessWidget {
   final int timeValue;
   final bool isSelected; // Se mantiene final porque no cambia dentro del widget
   final String identificador;
+  final int maxTime;
 
   // int width = MediaQuery.of()
   const smAnalogic({
@@ -12,6 +13,7 @@ class smAnalogic extends StatelessWidget {
     required this.timeValue,
     required this.isSelected,
     required this.identificador,
+    required this.maxTime,
   });
 
   String formatTime(int seconds) {
@@ -24,6 +26,7 @@ class smAnalogic extends StatelessWidget {
   Widget build(BuildContext context) {
     // Debug para verificar el valor de isSelected
     debugPrint("smAnalogic ($identificador) isSelected: $isSelected");
+
     return Container(
       padding: const EdgeInsets.all(5),
       margin: EdgeInsets.all(20),
@@ -44,7 +47,7 @@ class smAnalogic extends StatelessWidget {
           axes: <RadialAxis>[
             RadialAxis(
               minimum: 0,
-              maximum: 120,
+              maximum: maxTime.toDouble(),
               labelFormat: '{value}s',
               startAngle: 270,
               endAngle: 270,

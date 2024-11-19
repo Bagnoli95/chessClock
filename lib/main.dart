@@ -1,3 +1,4 @@
+import 'package:chess_clock/component/timePicker.dart';
 import 'package:chess_clock/pages/home.dart';
 import 'package:chess_clock/pages/pro_main.dart';
 import 'package:chess_clock/pages/sm_main.dart';
@@ -15,11 +16,15 @@ class MainApp extends StatelessWidget {
     bool clockMode = false; //True if digital mode and false if analogic
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      locale: Locale('vi'),
       home: Scaffold(
         backgroundColor: Colors.grey,
-        body: smClockScreen(clockMode: clockMode),
+        // body: smClockScreen(clockMode: clockMode),
         // body: proClockScreen(clockMode: clockMode),
-        // body: MyHomePage(),
+        body: MyHomePage(),
+        // body: Center(
+        //   child: WheelPickerExample(),
+        // ),
       ),
     );
   }

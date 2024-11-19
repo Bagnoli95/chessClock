@@ -6,7 +6,8 @@ import 'dart:async';
 
 class proClockScreen extends StatefulWidget {
   bool clockMode;
-  proClockScreen({super.key, required this.clockMode});
+  int selectedTime;
+  proClockScreen({super.key, required this.clockMode, required this.selectedTime});
 
   @override
   State<proClockScreen> createState() => _proClockScreenState();
@@ -24,8 +25,8 @@ class _proClockScreenState extends State<proClockScreen> {
   @override
   void initState() {
     super.initState();
-    leftTime = 600; // Ejemplo: 10 minutos en segundos
-    rightTime = 600; // Ejemplo: 10 minutos en segundos
+    leftTime = widget.selectedTime; // Ejemplo: 10 minutos en segundos
+    rightTime = widget.selectedTime; // Ejemplo: 10 minutos en segundos
     // Escuchamos los eventos del acelerómetro
     accelerometerSubscription = accelerometerEvents.listen((AccelerometerEvent event) {
       handleDeviceTilt(event.x); // Detectamos la inclinación del dispositivo

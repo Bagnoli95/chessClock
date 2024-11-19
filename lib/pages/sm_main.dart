@@ -5,7 +5,8 @@ import 'dart:async';
 
 class smClockScreen extends StatefulWidget {
   bool clockMode;
-  smClockScreen({super.key, required this.clockMode});
+  int selectedTime;
+  smClockScreen({super.key, required this.clockMode, required this.selectedTime});
 
   @override
   State<smClockScreen> createState() => _smClockScreenState();
@@ -16,14 +17,16 @@ class _smClockScreenState extends State<smClockScreen> {
   bool rightSelected = false;
   late int leftTime;
   late int rightTime;
+  late int maxTime;
 
   Timer? timer;
 
   @override
   void initState() {
     super.initState();
-    leftTime = 120; // Ejemplo: 10 minutos en segundos
-    rightTime = 120; // Ejemplo: 10 minutos en segundos
+    leftTime = widget.selectedTime; // Ejemplo: 10 minutos en segundos
+    rightTime = widget.selectedTime; // Ejemplo: 10 minutos en segundos
+    maxTime = widget.selectedTime;
   }
 
   void startTimer(bool isLeft) {
@@ -73,7 +76,18 @@ class _smClockScreenState extends State<smClockScreen> {
                 child: Transform(
                   alignment: Alignment.center,
                   transform: Matrix4.rotationZ(3.14159),
-                  child: (widget.clockMode) ? smDigital(timeValue: leftTime, isSelected: leftSelected, identificador: "Left") : smAnalogic(timeValue: leftTime, isSelected: leftSelected, identificador: "Left"),
+                  child: (widget.clockMode)
+                      ? smDigital(
+                          timeValue: leftTime,
+                          isSelected: leftSelected,
+                          identificador: "Left",
+                        )
+                      : smAnalogic(
+                          timeValue: leftTime,
+                          isSelected: leftSelected,
+                          identificador: "Left",
+                          maxTime: maxTime,
+                        ),
                 ),
               ),
             ),
@@ -98,7 +112,18 @@ class _smClockScreenState extends State<smClockScreen> {
                   });
                   startTimer(true);
                 },
-                child: (widget.clockMode) ? smDigital(timeValue: rightTime, isSelected: rightSelected, identificador: "Right") : smAnalogic(timeValue: rightTime, isSelected: rightSelected, identificador: "Right"),
+                child: (widget.clockMode)
+                    ? smDigital(
+                        timeValue: rightTime,
+                        isSelected: rightSelected,
+                        identificador: "Right",
+                      )
+                    : smAnalogic(
+                        timeValue: rightTime,
+                        isSelected: rightSelected,
+                        identificador: "Right",
+                        maxTime: maxTime,
+                      ),
               ),
             )
           ],
