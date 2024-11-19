@@ -24,7 +24,20 @@ class smDigital extends StatelessWidget {
     // Debug para verificar el valor de isSelected
     debugPrint("smDigital ($identificador) isSelected: $isSelected");
     return Container(
-      color: isSelected ? Colors.grey[800] : Colors.grey,
+      padding: const EdgeInsets.all(20),
+      margin: EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: isSelected ? Colors.white.withOpacity(0.1) : Colors.white.withOpacity(0.3),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: Colors.white.withOpacity(0.2)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.5),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
       child: Container(
         child: Center(
           child: Text(
@@ -32,8 +45,9 @@ class smDigital extends StatelessWidget {
             style: TextStyle(
               color: isSelected ? Colors.grey : Colors.white,
               letterSpacing: 3,
-              fontSize: 50,
-              shadows: const [Shadow(color: Colors.blueAccent, offset: Offset(2, 1), blurRadius: 10)],
+              fontSize: 70,
+              fontWeight: FontWeight.bold,
+              // shadows: const [Shadow(color: Colors.grey.withOpacity(0.1), offset: Offset(2, 1), blurRadius: 10)],
             ),
           ),
         ),

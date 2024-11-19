@@ -1,3 +1,4 @@
+import 'package:chess_clock/pages/home.dart';
 import 'package:chess_clock/pages/pro_main.dart';
 import 'package:chess_clock/pages/sm_main.dart';
 import 'package:flutter/material.dart';
@@ -11,13 +12,14 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool appMode = true; //True if digital mode and false if analogic
+    bool clockMode = false; //True if digital mode and false if analogic
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.grey,
-        // body: smClockScreen(appMode: appMode),
-        body: proClockScreen(appMode: appMode),
+        body: smClockScreen(clockMode: clockMode),
+        // body: proClockScreen(clockMode: clockMode),
+        // body: MyHomePage(),
       ),
     );
   }

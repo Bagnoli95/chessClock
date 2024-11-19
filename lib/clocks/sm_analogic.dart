@@ -25,32 +25,75 @@ class smAnalogic extends StatelessWidget {
     // Debug para verificar el valor de isSelected
     debugPrint("smAnalogic ($identificador) isSelected: $isSelected");
     return Container(
-      color: isSelected ? Colors.grey[800] : Colors.grey,
-      child: Container(
-        child: Center(
-          child: SfRadialGauge(axes: <RadialAxis>[
-            RadialAxis(minimum: 0, maximum: 120, labelFormat: '{value}s', pointers: <GaugePointer>[
-              NeedlePointer(
-                value: timeValue.toDouble(),
-                needleStartWidth: 1,
-                needleEndWidth: 5,
-                knobStyle: KnobStyle(
-                  knobRadius: 0.05,
-                  borderColor: Colors.black,
-                  borderWidth: 0.02,
-                  color: Colors.white,
-                ),
+      padding: const EdgeInsets.all(5),
+      margin: EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: isSelected ? Colors.white.withOpacity(0.1) : Colors.white.withOpacity(0.3),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: Colors.white.withOpacity(0.2)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.5),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Center(
+        child: SfRadialGauge(
+          axes: <RadialAxis>[
+            RadialAxis(
+              minimum: 0,
+              maximum: 120,
+              labelFormat: '{value}s',
+              startAngle: 270,
+              endAngle: 270,
+              showFirstLabel: false,
+              showLastLabel: true,
+              axisLabelStyle: GaugeTextStyle(
+                color: isSelected ? Colors.grey : Colors.black,
+                fontSize: 12,
+                fontStyle: FontStyle.italic,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Times',
               ),
-            ], annotations: <GaugeAnnotation>[
-              GaugeAnnotation(
-                  angle: 90,
-                  positionFactor: 0.5,
-                  widget: Text(
-                    timeValue.toString(),
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                  ))
-            ])
-          ]),
+              axisLineStyle: AxisLineStyle(
+                thickness: 0.1,
+                thicknessUnit: GaugeSizeUnit.factor,
+                color: Colors.black,
+              ),
+              pointers: <GaugePointer>[
+                NeedlePointer(
+                  value: timeValue.toDouble(),
+                  needleStartWidth: 1,
+                  needleEndWidth: 8,
+                  needleLength: 0.55,
+                  needleColor: Colors.red,
+                  knobStyle: KnobStyle(
+                    knobRadius: 0.05,
+                    borderColor: Colors.black,
+                    borderWidth: 0.02,
+                    color: Colors.black,
+                  ),
+                ),
+              ],
+              annotations: <GaugeAnnotation>[
+                GaugeAnnotation(
+                    angle: 90,
+                    positionFactor: 0.5,
+                    widget: Text(
+                      timeValue.toString(),
+                      style: TextStyle(
+                        color: isSelected ? Colors.grey : Colors.black,
+                        fontSize: 25,
+                        fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Times',
+                      ),
+                    ))
+              ],
+            )
+          ],
         ),
       ),
     );
