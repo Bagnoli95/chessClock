@@ -18,6 +18,8 @@ class _proClockScreenState extends State<proClockScreen> {
   bool rightSelected = false;
   late int leftTime;
   late int rightTime;
+  late int maxTime;
+  late double position_x, position_y, position_z;
 
   Timer? timer;
   late StreamSubscription<AccelerometerEvent> accelerometerSubscription;
@@ -27,21 +29,28 @@ class _proClockScreenState extends State<proClockScreen> {
     super.initState();
     leftTime = widget.selectedTime; // Ejemplo: 10 minutos en segundos
     rightTime = widget.selectedTime; // Ejemplo: 10 minutos en segundos
+    maxTime = widget.selectedTime;
+    position_x = 0;
+    position_y = 0;
+    position_z = 0;
     // Escuchamos los eventos del acelerómetro
     accelerometerSubscription = accelerometerEvents.listen((AccelerometerEvent event) {
-      handleDeviceTilt(event.x); // Detectamos la inclinación del dispositivo
+      handleDeviceTilt(event.x, event.y, event.z); // Detectamos la inclinación del dispositivo
     });
   }
 
-  void handleDeviceTilt(double x) {
+  void handleDeviceTilt(double x, double y, double z) {
+    position_x = (x * 100).round() / 100;
+    position_y = (y * 100).round() / 100;
+    position_z = (z * 100).round() / 100;
     // Detectamos inclinación hacia la derecha (x > 5.0) o hacia la izquierda (x < -5.0)
-    if (x > 5.0 && !rightSelected) {
+    if (y > 3.0 && !rightSelected) {
       setState(() {
         leftSelected = false;
         rightSelected = true;
       });
       startTimer(true);
-    } else if (x < -5.0 && !leftSelected) {
+    } else if (y < -3.0 && !leftSelected) {
       setState(() {
         leftSelected = true;
         rightSelected = false;
@@ -85,7 +94,7 @@ class _proClockScreenState extends State<proClockScreen> {
           children: [
             //LEFT
             Expanded(
-              flex: 45,
+              flex: 50,
               child: Center(
                 child: Transform(
                   alignment: Alignment.center,
@@ -93,25 +102,43 @@ class _proClockScreenState extends State<proClockScreen> {
                   child: SizedBox(
                     width: MediaQuery.of(context).size.height * 0.45,
                     height: MediaQuery.of(context).size.width,
-                    child: (widget.clockMode) ? proDigital(timeValue: leftTime, isSelected: leftSelected, identificador: "Left") : proAnalogic(timeValue: leftTime, isSelected: leftSelected, identificador: "Left"),
+                    child: (widget.clockMode)
+                        ? proDigital(
+                            timeValue: leftTime,
+                            isSelected: leftSelected,
+                            identificador: "Left",
+                          )
+                        : proAnalogic(
+                            timeValue: leftTime,
+                            isSelected: leftSelected,
+                            identificador: "Left",
+                            maxTime: maxTime,
+                          ),
                   ),
                 ),
               ),
             ),
 
-            //CENTER
-            Expanded(
-              flex: 10,
-              child: Container(
-                // margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
-                color: Colors.black,
-                child: Center(child: Text('soy un menu')),
-              ),
-            ),
+            // //CENTER
+            // Expanded(
+            //   flex: 10,
+            //   child: Container(
+            //     // margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
+            //     color: Colors.black,
+            //     child: Center(
+            //         child: Column(
+            //       children: [
+            //         Text('Valor de X: $position_x', style: TextStyle(color: Colors.white)),
+            //         Text('Valor de Y: $position_y', style: TextStyle(color: Colors.white)),
+            //         Text('Valor de Z: $position_z', style: TextStyle(color: Colors.white)),
+            //       ],
+            //     )),
+            //   ),
+            // ),
 
             //RIGHT
             Expanded(
-              flex: 45,
+              flex: 50,
               child: Center(
                 child: Transform(
                   alignment: Alignment.center,
@@ -119,7 +146,18 @@ class _proClockScreenState extends State<proClockScreen> {
                   child: SizedBox(
                     width: MediaQuery.of(context).size.height * 0.45,
                     height: MediaQuery.of(context).size.width,
-                    child: (widget.clockMode) ? proDigital(timeValue: rightTime, isSelected: rightSelected, identificador: "Right") : proAnalogic(timeValue: rightTime, isSelected: rightSelected, identificador: "Right"),
+                    child: (widget.clockMode)
+                        ? proDigital(
+                            timeValue: rightTime,
+                            isSelected: rightSelected,
+                            identificador: "Right",
+                          )
+                        : proAnalogic(
+                            timeValue: rightTime,
+                            isSelected: rightSelected,
+                            identificador: "Right",
+                            maxTime: maxTime,
+                          ),
                   ),
                 ),
               ),
