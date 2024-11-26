@@ -1,10 +1,12 @@
 import 'package:chess_clock/clocks/sm_analogic.dart';
 import 'package:chess_clock/clocks/sm_digital.dart';
+import 'package:chess_clock/clocks/sm_flip.dart';
+import 'package:chess_clock/clocks/sm_flipper.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
 class smClockScreen extends StatefulWidget {
-  bool clockMode;
+  String clockMode;
   int selectedTime;
   smClockScreen({super.key, required this.clockMode, required this.selectedTime});
 
@@ -76,18 +78,30 @@ class _smClockScreenState extends State<smClockScreen> {
                 child: Transform(
                   alignment: Alignment.center,
                   transform: Matrix4.rotationZ(3.14159),
-                  child: (widget.clockMode)
+                  child: (widget.clockMode == "smDigital")
                       ? smDigital(
                           timeValue: leftTime,
                           isSelected: leftSelected,
                           identificador: "Left",
                         )
-                      : smAnalogic(
-                          timeValue: leftTime,
-                          isSelected: leftSelected,
-                          identificador: "Left",
-                          maxTime: maxTime,
-                        ),
+                      : (widget.clockMode == "smAnalogic")
+                          ? smAnalogic(
+                              timeValue: leftTime,
+                              isSelected: leftSelected,
+                              identificador: "Left",
+                              maxTime: maxTime,
+                            )
+                          : (widget.clockMode == "smFlipper")
+                              ? smFlipper(
+                                  timeValue: leftTime,
+                                  isSelected: leftSelected,
+                                  identificador: "Left",
+                                )
+                              : smFlip(
+                                  timeValue: leftTime,
+                                  isSelected: leftSelected,
+                                  identificador: "Left",
+                                ),
                 ),
               ),
             ),
@@ -112,18 +126,30 @@ class _smClockScreenState extends State<smClockScreen> {
                   });
                   startTimer(true);
                 },
-                child: (widget.clockMode)
+                child: (widget.clockMode == "smDigital")
                     ? smDigital(
                         timeValue: rightTime,
                         isSelected: rightSelected,
                         identificador: "Right",
                       )
-                    : smAnalogic(
-                        timeValue: rightTime,
-                        isSelected: rightSelected,
-                        identificador: "Right",
-                        maxTime: maxTime,
-                      ),
+                    : (widget.clockMode == "smAnalogic")
+                        ? smAnalogic(
+                            timeValue: rightTime,
+                            isSelected: rightSelected,
+                            identificador: "Right",
+                            maxTime: maxTime,
+                          )
+                        : (widget.clockMode == "smFlipper")
+                            ? smFlipper(
+                                timeValue: rightTime,
+                                isSelected: rightSelected,
+                                identificador: "Right",
+                              )
+                            : smFlip(
+                                timeValue: rightTime,
+                                isSelected: rightSelected,
+                                identificador: "Right",
+                              ),
               ),
             )
           ],

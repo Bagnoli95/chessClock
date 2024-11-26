@@ -32,28 +32,30 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const SizedBox(height: 50),
+            const SizedBox(height: 60),
             // Title
             const Text(
               '¡Bienvenido!',
-              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.white),
+              style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold, color: Colors.white),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 20),
 
             const Text(
               'Simple y sin publicidad',
-              style: TextStyle(fontSize: 16, color: Colors.grey),
+              style: TextStyle(fontSize: 18, color: Colors.grey),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 40),
 
             //Etiqueta
             Container(
               padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
               child: Row(
                 children: [
+                  Text('| ', style: TextStyle(fontSize: 18, color: Colors.white)),
                   Expanded(child: Divider(color: Colors.grey, thickness: 1, endIndent: 6)),
-                  Text('Selecciona el tiempo de juego ', style: TextStyle(fontSize: 16, color: Colors.white)),
+                  Text('Selecciona el tiempo de juego ', style: TextStyle(fontSize: 18, color: Colors.white)),
                   Expanded(child: Divider(color: Colors.grey, thickness: 1, endIndent: 6)),
+                  Text('|', style: TextStyle(fontSize: 18, color: Colors.white)),
                 ],
               ),
             ),
@@ -67,6 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   readOnly: true,
                   style: TextStyle(
                     color: Colors.white,
+                    fontSize: 18,
                   ),
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
@@ -77,67 +80,106 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
+            const SizedBox(height: 20),
 
             //Etiqueta
             Container(
               padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
               child: Row(
                 children: [
+                  Text('| ', style: TextStyle(fontSize: 18, color: Colors.white)),
                   Expanded(child: Divider(color: Colors.grey, thickness: 1, endIndent: 6)),
-                  Text('Selecciona el modo que mas te guste ', style: TextStyle(fontSize: 16, color: Colors.white)),
+                  Text('Selecciona el modo que mas te guste ', style: TextStyle(fontSize: 18, color: Colors.white)),
                   Expanded(child: Divider(color: Colors.grey, thickness: 1, endIndent: 6)),
+                  Text('|', style: TextStyle(fontSize: 18, color: Colors.white)),
                 ],
               ),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 20),
 
-            Text('Modo Simple ', style: TextStyle(fontSize: 16, color: Colors.grey)),
+            Text('Modo Simple ', style: TextStyle(fontSize: 18, color: Colors.grey)),
 
             // Cards
             Expanded(
               child: GridView(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+                scrollDirection: Axis.horizontal,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1),
                 padding: EdgeInsets.all(10),
                 children: [
                   _buildGlassCard(
                     context,
                     'Digital',
-                    'Juega con un amigo solamente con tu dispositivo',
+                    'Interfaz simple y claro',
                     'smDigital',
                   ),
                   _buildGlassCard(
                     context,
                     'Analógico',
-                    'Juega con un amigo solamente con tu dispositivo',
+                    'Para los amantes de lo clásico',
                     'smAnalogic',
+                  ),
+                  _buildGlassCard(
+                    context,
+                    'Flipper',
+                    'Intuitivo y con animaciones',
+                    'smFlipper',
+                  ),
+                  _buildGlassCard(
+                    context,
+                    'Flip',
+                    'Intuitivo y con animaciones',
+                    'smFlip',
                   ),
                 ],
               ),
             ),
 
             //Etiqueta
-            Text('con stand ', style: TextStyle(fontSize: 16, color: Colors.grey)),
+            Text('Con Stand ', style: TextStyle(fontSize: 18, color: Colors.grey)),
             //PRO CARDS
             Expanded(
               child: GridView(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+                scrollDirection: Axis.horizontal,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1),
                 padding: EdgeInsets.all(10),
                 children: [
                   _buildGlassCard(
                     context,
                     'Digital',
-                    'Combina la aplicación con el stand pro',
+                    'Interfaz simple y claro',
                     'proDigital',
                   ),
                   _buildGlassCard(
                     context,
                     'Analógico',
-                    'Combina la aplicación con el stand pro',
+                    'Para los amantes de lo clásico',
                     'proAnalogic',
+                  ),
+                  _buildGlassCard(
+                    context,
+                    'Flipper',
+                    'Intuitivo y con animaciones',
+                    'proFlipper',
                   ),
                 ],
               ),
             ),
+            const SizedBox(height: 30),
+
+            //Etiqueta
+            Container(
+              padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+              child: Row(
+                children: [
+                  Text('| ', style: TextStyle(fontSize: 18, color: Colors.white)),
+                  Expanded(child: Divider(color: Colors.grey, thickness: 1, endIndent: 6)),
+                  Text('| ', style: TextStyle(fontSize: 18, color: Colors.white)),
+                  Expanded(child: Divider(color: Colors.grey, thickness: 1, endIndent: 6)),
+                  Text('|', style: TextStyle(fontSize: 18, color: Colors.white)),
+                ],
+              ),
+            ),
+            const SizedBox(height: 30),
           ],
         ),
       ),
@@ -153,21 +195,30 @@ class _MyHomePageState extends State<MyHomePage> {
           final timeInSeconds = convertToSeconds(selectedTime);
           switch (mode) {
             case 'smDigital':
-              Navigator.push(context, MaterialPageRoute(builder: (context) => smClockScreen(clockMode: true, selectedTime: timeInSeconds)));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => smClockScreen(clockMode: mode, selectedTime: timeInSeconds)));
               break;
             case 'smAnalogic':
-              Navigator.push(context, MaterialPageRoute(builder: (context) => smClockScreen(clockMode: false, selectedTime: timeInSeconds)));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => smClockScreen(clockMode: mode, selectedTime: timeInSeconds)));
+              break;
+            case 'smFlipper':
+              Navigator.push(context, MaterialPageRoute(builder: (context) => smClockScreen(clockMode: mode, selectedTime: timeInSeconds)));
+              break;
+            case 'smFlip':
+              Navigator.push(context, MaterialPageRoute(builder: (context) => smClockScreen(clockMode: mode, selectedTime: timeInSeconds)));
               break;
             case 'proDigital':
-              Navigator.push(context, MaterialPageRoute(builder: (context) => proClockScreen(clockMode: true, selectedTime: timeInSeconds)));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => proClockScreen(clockMode: mode, selectedTime: timeInSeconds)));
+              break;
+            case 'proAnalogic':
+              Navigator.push(context, MaterialPageRoute(builder: (context) => proClockScreen(clockMode: mode, selectedTime: timeInSeconds)));
               break;
             default:
-              Navigator.push(context, MaterialPageRoute(builder: (context) => proClockScreen(clockMode: false, selectedTime: timeInSeconds)));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => proClockScreen(clockMode: mode, selectedTime: timeInSeconds)));
           }
         } else {
           // Maneja el caso donde el tiempo no está seleccionado
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Por favor, selecciona un tiempo primero.')),
+            const SnackBar(content: Text('Por favor, selecciona un tiempo primero.')),
           );
         }
       },
@@ -187,19 +238,18 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         padding: const EdgeInsets.all(20),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 15),
             Text(
               title,
               textAlign: TextAlign.center,
               style: const TextStyle(
-                fontSize: 24,
+                fontSize: 22,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
               ),
             ),
-            const SizedBox(height: 15),
             Text(
               subtitle,
               textAlign: TextAlign.center,

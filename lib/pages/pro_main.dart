@@ -1,11 +1,12 @@
 import 'package:chess_clock/clocks/pro_analogic.dart';
 import 'package:chess_clock/clocks/pro_digital.dart';
+import 'package:chess_clock/clocks/pro_flipper.dart';
 import 'package:sensors_plus/sensors_plus.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
 class proClockScreen extends StatefulWidget {
-  bool clockMode;
+  String clockMode;
   int selectedTime;
   proClockScreen({super.key, required this.clockMode, required this.selectedTime});
 
@@ -102,18 +103,24 @@ class _proClockScreenState extends State<proClockScreen> {
                   child: SizedBox(
                     width: MediaQuery.of(context).size.height * 0.45,
                     height: MediaQuery.of(context).size.width,
-                    child: (widget.clockMode)
+                    child: (widget.clockMode == "proDigital")
                         ? proDigital(
                             timeValue: leftTime,
                             isSelected: leftSelected,
                             identificador: "Left",
                           )
-                        : proAnalogic(
-                            timeValue: leftTime,
-                            isSelected: leftSelected,
-                            identificador: "Left",
-                            maxTime: maxTime,
-                          ),
+                        : (widget.clockMode == "proAnalogic")
+                            ? proAnalogic(
+                                timeValue: leftTime,
+                                isSelected: leftSelected,
+                                identificador: "Left",
+                                maxTime: maxTime,
+                              )
+                            : proFlipper(
+                                timeValue: leftTime,
+                                isSelected: leftSelected,
+                                identificador: "Left",
+                              ),
                   ),
                 ),
               ),
@@ -146,18 +153,24 @@ class _proClockScreenState extends State<proClockScreen> {
                   child: SizedBox(
                     width: MediaQuery.of(context).size.height * 0.45,
                     height: MediaQuery.of(context).size.width,
-                    child: (widget.clockMode)
+                    child: (widget.clockMode == "proDigital")
                         ? proDigital(
                             timeValue: rightTime,
                             isSelected: rightSelected,
                             identificador: "Right",
                           )
-                        : proAnalogic(
-                            timeValue: rightTime,
-                            isSelected: rightSelected,
-                            identificador: "Right",
-                            maxTime: maxTime,
-                          ),
+                        : (widget.clockMode == "proAnalogic")
+                            ? proAnalogic(
+                                timeValue: rightTime,
+                                isSelected: rightSelected,
+                                identificador: "Right",
+                                maxTime: maxTime,
+                              )
+                            : proFlipper(
+                                timeValue: rightTime,
+                                isSelected: rightSelected,
+                                identificador: "Right",
+                              ),
                   ),
                 ),
               ),
