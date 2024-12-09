@@ -15,6 +15,9 @@ class smFlipper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double minutos = timeValue / 60;
+    double segundos = timeValue % 60;
+
     return Container(
       padding: const EdgeInsets.all(20),
       margin: const EdgeInsets.all(20),
@@ -31,14 +34,43 @@ class smFlipper extends StatelessWidget {
         ],
       ),
       child: Center(
-        child: AnimatedFlipCounter(
-          duration: const Duration(milliseconds: 65),
-          value: timeValue.toDouble(),
-          textStyle: TextStyle(
-            fontSize: 70,
-            color: isSelected ? Colors.grey : Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            //MINUTOS
+            AnimatedFlipCounter(
+              duration: const Duration(milliseconds: 65),
+              value: minutos,
+              wholeDigits: 2,
+              fractionDigits: 0,
+              textStyle: TextStyle(
+                fontSize: 70,
+                color: isSelected ? Colors.grey : Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+
+            //SEPARADOR
+            Text(':',
+                style: TextStyle(
+                  fontSize: 70,
+                  color: isSelected ? Colors.grey : Colors.white,
+                  fontWeight: FontWeight.bold,
+                )),
+
+            //SEGUNDOS
+            AnimatedFlipCounter(
+              duration: const Duration(milliseconds: 65),
+              value: segundos,
+              wholeDigits: 2,
+              fractionDigits: 0,
+              textStyle: TextStyle(
+                fontSize: 70,
+                color: isSelected ? Colors.grey : Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
         ),
       ),
     );

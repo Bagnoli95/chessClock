@@ -1,3 +1,4 @@
+import 'package:chess_clock/tools/convertStringToSecons.dart';
 import 'package:flutter/material.dart';
 
 class smDigital extends StatelessWidget {
@@ -12,12 +13,6 @@ class smDigital extends StatelessWidget {
     required this.isSelected,
     required this.identificador,
   });
-
-  String formatTime(int seconds) {
-    int minutes = seconds ~/ 60;
-    int remainingSeconds = seconds % 60;
-    return '${minutes.toString().padLeft(2, '0')}:${remainingSeconds.toString().padLeft(2, '0')}';
-  }
 
   @override
   Widget build(BuildContext context) {

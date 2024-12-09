@@ -102,8 +102,8 @@ class _MyHomePageState extends State<MyHomePage> {
             // Cards
             Expanded(
               child: GridView(
-                scrollDirection: Axis.horizontal,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1),
+                scrollDirection: Axis.vertical,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
                 padding: EdgeInsets.all(10),
                 children: [
                   _buildGlassCard(
@@ -134,37 +134,37 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
 
-            //Etiqueta
-            Text('Con Stand ', style: TextStyle(fontSize: 18, color: Colors.grey)),
-            //PRO CARDS
-            Expanded(
-              child: GridView(
-                scrollDirection: Axis.horizontal,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1),
-                padding: EdgeInsets.all(10),
-                children: [
-                  _buildGlassCard(
-                    context,
-                    'Digital',
-                    'Interfaz simple y claro',
-                    'proDigital',
-                  ),
-                  _buildGlassCard(
-                    context,
-                    'Analógico',
-                    'Para los amantes de lo clásico',
-                    'proAnalogic',
-                  ),
-                  _buildGlassCard(
-                    context,
-                    'Flipper',
-                    'Intuitivo y con animaciones',
-                    'proFlipper',
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 30),
+            // //Etiqueta
+            // Text('Con Stand ', style: TextStyle(fontSize: 18, color: Colors.grey)),
+            // //PRO CARDS
+            // Expanded(
+            //   child: GridView(
+            //     scrollDirection: Axis.horizontal,
+            //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1),
+            //     padding: EdgeInsets.all(10),
+            //     children: [
+            //       _buildGlassCard(
+            //         context,
+            //         'Digital',
+            //         'Interfaz simple y claro',
+            //         'proDigital',
+            //       ),
+            //       _buildGlassCard(
+            //         context,
+            //         'Analógico',
+            //         'Para los amantes de lo clásico',
+            //         'proAnalogic',
+            //       ),
+            //       _buildGlassCard(
+            //         context,
+            //         'Flipper',
+            //         'Intuitivo y con animaciones',
+            //         'proFlipper',
+            //       ),
+            //     ],
+            //   ),
+            // ),
+            // const SizedBox(height: 30),
 
             //Etiqueta
             Container(
@@ -218,7 +218,7 @@ class _MyHomePageState extends State<MyHomePage> {
         } else {
           // Maneja el caso donde el tiempo no está seleccionado
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Por favor, selecciona un tiempo primero.')),
+            const SnackBar(content: Text('Por favor, selecciona el tiempo de la partida primero.')),
           );
         }
       },
