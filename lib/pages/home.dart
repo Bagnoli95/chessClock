@@ -44,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
               'Simple y sin publicidad',
               style: TextStyle(fontSize: 18, color: Colors.grey),
             ),
-            const SizedBox(height: 40),
+            const SizedBox(height: 30),
 
             //Etiqueta
             Container(
@@ -80,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 10),
 
             //Etiqueta
             Container(
@@ -89,15 +89,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: [
                   Text('| ', style: TextStyle(fontSize: 18, color: Colors.white)),
                   Expanded(child: Divider(color: Colors.grey, thickness: 1, endIndent: 6)),
-                  Text('Selecciona el modo que mas te guste ', style: TextStyle(fontSize: 18, color: Colors.white)),
+                  Text('Selecciona el estilo del reloj ', style: TextStyle(fontSize: 18, color: Colors.white)),
                   Expanded(child: Divider(color: Colors.grey, thickness: 1, endIndent: 6)),
                   Text('|', style: TextStyle(fontSize: 18, color: Colors.white)),
                 ],
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 10),
 
-            Text('Modo Simple ', style: TextStyle(fontSize: 18, color: Colors.grey)),
+            // Text('Modo Simple ', style: TextStyle(fontSize: 18, color: Colors.grey)),
 
             // Cards
             Expanded(
@@ -120,14 +120,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   _buildGlassCard(
                     context,
-                    'Flipper',
-                    'Intuitivo y con animaciones',
+                    'Digital II',
+                    'Simple, claro y con animaciones',
                     'smFlipper',
                   ),
                   _buildGlassCard(
                     context,
-                    'Flip',
-                    'Intuitivo y con animaciones',
+                    'Flipper',
+                    'Divertido',
                     'smFlip',
                   ),
                 ],

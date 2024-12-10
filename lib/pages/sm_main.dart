@@ -4,6 +4,7 @@ import 'package:chess_clock/clocks/simpleMode/sm_flip.dart';
 import 'package:chess_clock/clocks/simpleMode/sm_flipper.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
+import 'package:wakelock_plus/wakelock_plus.dart';
 
 class smClockScreen extends StatefulWidget {
   String clockMode;
@@ -29,6 +30,7 @@ class _smClockScreenState extends State<smClockScreen> {
     leftTime = widget.selectedTime; // Ejemplo: 10 minutos en segundos
     rightTime = widget.selectedTime; // Ejemplo: 10 minutos en segundos
     maxTime = widget.selectedTime;
+    WakelockPlus.enable(); // Mantener la pantalla encendida
   }
 
   void startTimer(bool isLeft) {
@@ -161,6 +163,7 @@ class _smClockScreenState extends State<smClockScreen> {
   @override
   void dispose() {
     stopTimer(); // Detenemos el temporizador al salir de la pantalla
+    WakelockPlus.disable(); // Permitir que la pantalla se apague nuevamente
     super.dispose();
   }
 }

@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <uses-feature android:name="android.hardware.sensor.gyroscope" android:required="true" />
     <application
-        android:label="chess_clock"
+        android:label="ChessClock"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
