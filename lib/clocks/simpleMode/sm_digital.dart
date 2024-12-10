@@ -40,7 +40,7 @@ class smDigital extends StatelessWidget {
             style: TextStyle(
               color: isSelected ? Colors.grey : Colors.white,
               letterSpacing: 3,
-              fontSize: 70,
+              fontSize: 120,
               fontWeight: FontWeight.bold,
               // shadows: const [Shadow(color: Colors.grey.withOpacity(0.1), offset: Offset(2, 1), blurRadius: 10)],
             ),

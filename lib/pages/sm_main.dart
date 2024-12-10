@@ -1,7 +1,7 @@
-import 'package:chess_clock/clocks/sm_analogic.dart';
-import 'package:chess_clock/clocks/sm_digital.dart';
-import 'package:chess_clock/clocks/sm_flip.dart';
-import 'package:chess_clock/clocks/sm_flipper.dart';
+import 'package:chess_clock/clocks/simpleMode/sm_analogic.dart';
+import 'package:chess_clock/clocks/simpleMode/sm_digital.dart';
+import 'package:chess_clock/clocks/simpleMode/sm_flip.dart';
+import 'package:chess_clock/clocks/simpleMode/sm_flipper.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 

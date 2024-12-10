@@ -1,3 +1,4 @@
+import 'package:chess_clock/tools/convertStringToSecons.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
@@ -15,12 +16,6 @@ class smAnalogic extends StatelessWidget {
     required this.identificador,
     required this.maxTime,
   });
-
-  String formatTime(int seconds) {
-    int minutes = seconds ~/ 60;
-    int remainingSeconds = seconds % 60;
-    return '${minutes.toString().padLeft(2, '0')}:${remainingSeconds.toString().padLeft(2, '0')}';
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,14 +43,14 @@ class smAnalogic extends StatelessWidget {
             RadialAxis(
               minimum: 0,
               maximum: maxTime.toDouble(),
-              labelFormat: '{value}s',
+              labelFormat: '{value}',
               startAngle: 270,
               endAngle: 270,
               showFirstLabel: false,
               showLastLabel: true,
               axisLabelStyle: GaugeTextStyle(
                 color: isSelected ? Colors.grey : Colors.black,
-                fontSize: 12,
+                fontSize: 18,
                 fontStyle: FontStyle.italic,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Times',
@@ -85,10 +80,10 @@ class smAnalogic extends StatelessWidget {
                     angle: 90,
                     positionFactor: 0.5,
                     widget: Text(
-                      timeValue.toString(),
+                      formatTime(timeValue),
                       style: TextStyle(
                         color: isSelected ? Colors.grey : Colors.black,
-                        fontSize: 25,
+                        fontSize: 40,
                         fontStyle: FontStyle.italic,
                         fontWeight: FontWeight.bold,
                         fontFamily: 'Times',

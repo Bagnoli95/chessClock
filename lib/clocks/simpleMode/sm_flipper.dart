@@ -15,8 +15,9 @@ class smFlipper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double minutos = timeValue / 60;
+    double minutos = (timeValue / 60).floorToDouble();
     double segundos = timeValue % 60;
+    debugPrint("smFlipper: timeValue: ($timeValue), minutos: ($minutos), segundos: ($segundos)");
 
     return Container(
       padding: const EdgeInsets.all(20),
@@ -44,7 +45,7 @@ class smFlipper extends StatelessWidget {
               wholeDigits: 2,
               fractionDigits: 0,
               textStyle: TextStyle(
-                fontSize: 70,
+                fontSize: 120,
                 color: isSelected ? Colors.grey : Colors.white,
                 fontWeight: FontWeight.bold,
               ),
@@ -53,7 +54,7 @@ class smFlipper extends StatelessWidget {
             //SEPARADOR
             Text(':',
                 style: TextStyle(
-                  fontSize: 70,
+                  fontSize: 120,
                   color: isSelected ? Colors.grey : Colors.white,
                   fontWeight: FontWeight.bold,
                 )),
@@ -65,7 +66,7 @@ class smFlipper extends StatelessWidget {
               wholeDigits: 2,
               fractionDigits: 0,
               textStyle: TextStyle(
-                fontSize: 70,
+                fontSize: 120,
                 color: isSelected ? Colors.grey : Colors.white,
                 fontWeight: FontWeight.bold,
               ),

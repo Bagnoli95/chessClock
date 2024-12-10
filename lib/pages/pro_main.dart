@@ -1,6 +1,6 @@
-import 'package:chess_clock/clocks/pro_analogic.dart';
-import 'package:chess_clock/clocks/pro_digital.dart';
-import 'package:chess_clock/clocks/pro_flipper.dart';
+import 'package:chess_clock/clocks/standMode/pro_analogic.dart';
+import 'package:chess_clock/clocks/standMode/pro_digital.dart';
+import 'package:chess_clock/clocks/standMode/pro_flipper.dart';
 import 'package:sensors_plus/sensors_plus.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
