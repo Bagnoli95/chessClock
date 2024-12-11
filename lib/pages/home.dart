@@ -124,12 +124,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     'Simple, claro y con animaciones',
                     'smFlipper',
                   ),
-                  _buildGlassCard(
-                    context,
-                    'Flipper',
-                    'Divertido',
-                    'smFlip',
-                  ),
+                  // _buildGlassCard(
+                  //   context,
+                  //   'Flipper',
+                  //   'Divertido',
+                  //   'smFlip',
+                  // ),
                 ],
               ),
             ),

@@ -93,17 +93,22 @@ class _smClockScreenState extends State<smClockScreen> {
                               identificador: "Left",
                               maxTime: maxTime,
                             )
-                          : (widget.clockMode == "smFlipper")
-                              ? smFlipper(
-                                  timeValue: leftTime,
-                                  isSelected: leftSelected,
-                                  identificador: "Left",
-                                )
-                              : smFlip(
-                                  timeValue: leftTime,
-                                  isSelected: leftSelected,
-                                  identificador: "Left",
-                                ),
+                          : smFlipper(
+                              timeValue: leftTime,
+                              isSelected: leftSelected,
+                              identificador: "Left",
+                            ),
+                  // : (widget.clockMode == "smFlipper")
+                  //     ? smFlipper(
+                  //         timeValue: leftTime,
+                  //         isSelected: leftSelected,
+                  //         identificador: "Left",
+                  //       )
+                  //     : smFlip(
+                  //         timeValue: leftTime,
+                  //         isSelected: leftSelected,
+                  //         identificador: "Left",
+                  //       ),
                 ),
               ),
             ),
@@ -141,17 +146,22 @@ class _smClockScreenState extends State<smClockScreen> {
                             identificador: "Right",
                             maxTime: maxTime,
                           )
-                        : (widget.clockMode == "smFlipper")
-                            ? smFlipper(
-                                timeValue: rightTime,
-                                isSelected: rightSelected,
-                                identificador: "Right",
-                              )
-                            : smFlip(
-                                timeValue: rightTime,
-                                isSelected: rightSelected,
-                                identificador: "Right",
-                              ),
+                        : smFlipper(
+                            timeValue: rightTime,
+                            isSelected: rightSelected,
+                            identificador: "Right",
+                          ),
+                // : (widget.clockMode == "smFlipper")
+                //     ? smFlipper(
+                //         timeValue: rightTime,
+                //         isSelected: rightSelected,
+                //         identificador: "Right",
+                //       )
+                //     : smFlip(
+                //         timeValue: rightTime,
+                //         isSelected: rightSelected,
+                //         identificador: "Right",
+                //       ),
               ),
             )
           ],

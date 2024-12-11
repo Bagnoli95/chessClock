@@ -1,7 +1,5 @@
 import 'package:flip_board/flip_clock.dart';
 import 'package:flutter/material.dart';
-import 'package:animated_flip_counter/animated_flip_counter.dart';
-import 'package:flip_board/flip_board.dart';
 
 class smFlip extends StatelessWidget {
   final int timeValue;
@@ -55,5 +53,3 @@ class smFlip extends StatelessWidget {
     );
   }
 }
-//https://pub.dev/packages/flip_board
-//https://pub.dev/packages/animated_flip_counter
